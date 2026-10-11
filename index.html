@@ -1163,7 +1163,7 @@
     // URL du backend (Render en production)
     const API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
       ? 'http://localhost:3000'
-      : 'https://cmno.onrender.com'; // Backend Render (cmno)
+      : 'https://felix-store-backend-js5s.onrender.com'; // Backend Render
 
     // EmailJS — mêmes identifiants que ton ancienne interface (à adapter si besoin)
     const EMAILJS_CONFIG = {
@@ -1172,6 +1172,29 @@
       publicKey: '6ouCqGUsHp6kres13',
       toEmail: 'tekokossifelixkangnisoukpe5@gmail.com'
     };
+
+    // Logo onglet (favicon) — même image que le head HTML
+    const FAVICON_URL = 'https://raw.githubusercontent.com/tekokossifelixkangnisoukpe5-ship-it/photo/main/33181-1.jpg';
+
+    function setFavicon(url) {
+      const href = url || FAVICON_URL;
+      let link = document.querySelector("link[rel='icon']");
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+      }
+      link.type = 'image/jpeg';
+      link.href = href + (href.indexOf('?') === -1 ? '?v=2' : '');
+      let apple = document.querySelector("link[rel='apple-touch-icon']");
+      if (!apple) {
+        apple = document.createElement('link');
+        apple.rel = 'apple-touch-icon';
+        document.head.appendChild(apple);
+      }
+      apple.href = href;
+    }
+    setFavicon(FAVICON_URL);
 
     // Google Analytics 4 — remplace par ton ID (GA4 → Admin → Flux de données → G-XXXXXXXX)
     const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
